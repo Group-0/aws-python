@@ -43,8 +43,8 @@ with open(LOCAL_FILE, "r") as file:
     amt_request_total= len(file.readlines())
 
 # Roxanna's Code: Outputting the requested amounts
-print("Total Amount of Data requested within six months:", amt_request_six_months)
+print("Total amount of data requested within six months:", amt_request_six_months)
 
-print("Total Amount of Requests for the total amount of time period:", amt_request_total)
+print("Total amount of requests for the total amount of time period:", amt_request_total)
 
 print("Done analyzing log files.")
