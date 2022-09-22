@@ -65,21 +65,22 @@ with open(LOCAL_FILE, "r") as file:
         one_line_list = one_line.split(" ")
         # print(one_line_list)
 
+        # Skips any lines in log file that are not the same length 
         if len(one_line_list) == 10:
-            # Request code
+            # Request code from second to last index of list
             code = one_line_list[len(one_line_list) - 2]
-            
 
             # If code at first index is equal to 4; which indicates a bad request
             if code[0] == "4":
                 # Increment amt_bad_requests + 1
                 amt_bad_requests += 1
 
-
 # Get percentage; divide amt_bad_requests by total amount of requests found in previous lab #3
 bad_requests_percent = (amt_bad_requests / amt_request_total) * 100
 print("Total amount of bad requests: ", amt_bad_requests)
 print("Percent of bad requests: ", round(bad_requests_percent, 2), "%")
+
+
 
 #Code for least Requested File: 
 amt_least_requested = 0
