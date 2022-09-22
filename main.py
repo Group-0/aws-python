@@ -48,3 +48,22 @@ print("Total amount of data requested within six months:", amt_request_six_month
 print("Total amount of requests for the total amount of time period:", amt_request_total)
 
 print("Done analyzing log files.")
+
+#Code for least Requested File: 
+amt_least_requested = 0
+
+with open(local_file,"r") as file:
+    amt_least_requested= len(file.readlines())
+
+line = ""
+list = line.split(',')
+fileInfo = list[1].split(' ')
+
+fileName = fileInfo[1]
+
+filesCount = { }
+
+#if (fileName exists within filesCount):
+  #find file + add count
+#else:
+ # add file to filesCount and default to 1
