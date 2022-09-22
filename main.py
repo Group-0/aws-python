@@ -81,3 +81,21 @@ bad_requests_percent = (amt_bad_requests / amt_request_total) * 100
 print("Total amount of bad requests: ", amt_bad_requests)
 print("Percent of bad requests: ", round(bad_requests_percent, 2), "%")
 
+#Code for least Requested File: 
+amt_least_requested = 0
+
+with open(local_file,"r") as file:
+    amt_least_requested= len(file.readlines())
+
+line = ""
+list = line.split(',')
+fileInfo = list[1].split(' ')
+
+fileName = fileInfo[1]
+
+filesCount = { }
+
+#if (fileName exists within filesCount):
+  #find file + add count
+#else:
+ # add file to filesCount and default to 1
