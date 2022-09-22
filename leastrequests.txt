@@ -12,9 +12,11 @@ count += 1
 
 ##two for loops## 
 for each line: 
-    next = 
+    if next [] = ''
 
-for 
+    else: 
+
+for line in read: 
 
 ##if (compare)##
 if next == amt_least_requested:
