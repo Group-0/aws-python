@@ -1,5 +1,5 @@
-amt_of_least_requested
-amt_least_requested= 200
+amt_of_least_requested = 0
+amt_least_requested = 200
 next = 0 
 
 ##Amount of least Requested Files ##
@@ -20,3 +20,5 @@ for line in read:
 
 ##if (compare)##
 if next == amt_least_requested:
+
+
