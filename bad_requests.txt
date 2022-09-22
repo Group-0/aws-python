@@ -2,13 +2,14 @@ Percentage of unsuccessful requests - Irish Pseudo Code
 
 # Make amt_bad_requests variable to keep track of total amount of 4xx status codes
 # Open file
-# Read file
 # Read each line/request as string
 # Get index where status code is
     # Compare if status code contains '4' in beginning
         # If yes
             # Increment amt_bad_requests + 1
         # If no
-            #
+            # Do nothing
 # Get percentage; divide amt_bad_requests by total amount of requests found in previous lab #3
+
+Function
 

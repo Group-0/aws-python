@@ -1,3 +1,4 @@
+from multiprocessing.resource_sharer import stop
 from urllib.request import urlretrieve
 import os
 
@@ -48,3 +49,35 @@ print("Total amount of data requested within six months:", amt_request_six_month
 print("Total amount of requests for the total amount of time period:", amt_request_total)
 
 print("Done analyzing log files.")
+
+# Irish's Code: Percentage of total amount of bad requests
+
+# Make amt_bad_requests variable to keep track of total amount of 4xx status codes
+amt_bad_requests = 0
+# Open file
+with open(LOCAL_FILE, "r") as file:
+    
+    # Get index where status code is
+    for line in file:
+        # Reads line
+        one_line = file.readline()
+        # Stores each value in list and splits it by space
+        one_line_list = one_line.split(" ")
+        # print(one_line_list)
+
+        if len(one_line_list) == 10:
+            # Request code
+            code = one_line_list[len(one_line_list) - 2]
+            
+
+            # If code at first index is equal to 4; which indicates a bad request
+            if code[0] == "4":
+                # Increment amt_bad_requests + 1
+                amt_bad_requests += 1
+
+
+# Get percentage; divide amt_bad_requests by total amount of requests found in previous lab #3
+bad_requests_percent = (amt_bad_requests / amt_request_total) * 100
+print("Total amount of bad requests: ", amt_bad_requests)
+print("Percent of bad requests: ", round(bad_requests_percent, 2), "%")
+
