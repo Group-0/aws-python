@@ -84,7 +84,7 @@ print("Percent of bad requests: ", round(bad_requests_percent, 2), "%")
 
 
 #Roxanna: Code for least Requested File: 
-filesCount = {}
+filesCount = {'index' : ,   'html' :  , '' : }
 
 for line in open(local_file):
     fileInfo = re.split('index.html', line)
@@ -96,4 +96,8 @@ for line in open(local_file):
         filesCount[filename] += 1
     else:
 
-        filesCount[filename] = 1
+        filesCount[filename] = 1 
+
+#Returns amount of least requested log file
+min_value = min(filesCount.values())
+print(min_value)
