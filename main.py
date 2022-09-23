@@ -1,6 +1,7 @@
 from multiprocessing.resource_sharer import stop
 from urllib.request import urlretrieve
 import os
+import re
 
 # Variables to use
 amt_request_six_months = 0
@@ -82,21 +83,17 @@ print("Percent of bad requests: ", round(bad_requests_percent, 2), "%")
 
 
 
-#Code for least Requested File: 
-amt_least_requested = 0
+#Roxanna: Code for least Requested File: 
+filesCount = {}
 
-with open(local_file,"r") as file:
-    amt_least_requested= len(file.readlines())
+for line in open(local_file):
+    fileInfo = re.split('index.html', line)
 
-line = ""
-list = line.split(',')
-fileInfo = list[1].split(' ')
+    filename = fileInfo[3]
 
-fileName = fileInfo[1]
+    if filename in filesCount:
 
-filesCount = { }
+        filesCount[filename] += 1
+    else:
 
-#if (fileName exists within filesCount):
-  #find file + add count
-#else:
- # add file to filesCount and default to 1
+        filesCount[filename] = 1
