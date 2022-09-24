@@ -84,11 +84,14 @@ print("Percent of bad requests: ", round(bad_requests_percent, 2), "%")
 
 
 #Code for counting both most & least requested Files: 
-filesCount = {'index': ,'html' :  ,'git': }
+with open(LOCAL_FILE, "r") as file:
+    list = line.split ("")
+   
+    for line in file:
+        fileInfo = list[1].split(' ')
+        filename = fileInfo[1]
 
-for line in open(LOCAL_FILE):
-    fileInfo = list[1].split(' ')
-    filename = fileInfo[3]
+    filesCount = {'index': 0,'html' : 0 ,'git':0} #0 = place holder
 
     if filename in filesCount:
         filesCount[filename] += 1
