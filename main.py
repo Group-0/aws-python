@@ -81,23 +81,3 @@ bad_requests_percent = (amt_bad_requests / amt_request_total) * 100
 print("Total amount of bad requests: ", amt_bad_requests)
 print("Percent of bad requests: ", round(bad_requests_percent, 2), "%")
 
-
-
-#Code for counting both most & least requested Files: 
-with open(LOCAL_FILE, "r") as file:
-    list = line.split ("")
-   
-    for line in file:
-        fileInfo = list[1].split(' ')
-        filename = fileInfo[1]
-
-    filesCount = {'index': 0,'html' : 0 ,'git':0} #0 = place holder
-
-    if filename in filesCount:
-        filesCount[filename] += 1
-    else:
-        filesCount[filename] = 1 
-
-#Roxanna's: Returns amount of least requested log file
-min_value = min(filesCount.values())
-print(min_value)
