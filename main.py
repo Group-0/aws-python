@@ -78,10 +78,16 @@ print("Total amount of requests for the total amount of time period:", amt_reque
 print("Done analyzing log files.")
 
 
-# Irish's Code: Percentage of total amount of bad requests
+# Irish's Code: Percentage of requests that were unsuccessful (4xx request codes)
+# Open and read file
 with open(LOCAL_FILE, "r") as file:
+    # Call function with correct parameters and print results
     print("Percent of Unsuccessful Requests: ", getRequestsPercent(file, "4"), "%")
 
+# Juan's Code: Percentage of requests that were redirected elsewhere (3xx request codes)
+# Open and read file
+
+# Call function with correct parameters and print results
 
 
 
