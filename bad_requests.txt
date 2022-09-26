@@ -11,5 +11,24 @@ Percentage of unsuccessful requests - Irish Pseudo Code
             # Do nothing
 # Get percentage; divide amt_bad_requests by total amount of requests found in previous lab #3
 
-Function
 
+
+####Other method using regular expressions (regex):#####
+
+Ensure re is imported
+
+Create variable for request code we're looking for
+Create variable to track amount of time request code appeared
+
+Open file
+
+Loop through each line of file
+
+Check if line matches pattern
+
+If line matches pattern 
+
+Increment variable to track amount
+
+Regex Expression to match 4xx codes
+.*\[([0-9]+/[a-zA-Z]+/[0-9]{4}):(.*) \-[0-9]{4}\] \"(.*)\" num\d\d

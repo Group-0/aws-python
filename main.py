@@ -21,6 +21,30 @@ def getSixMonths(file):
             if "24/May/1995" in line:
                 return (amt_request_six_months - 1)
 
+
+# Irish's Code: function to get the percent of requests for a particular request code starting with string/char num (i.e., 4xx, 3xx)
+def getRequestsPercent(file, num):
+    # Get amt_request_total 
+    global amt_request_total
+    # Append first digit of request code we're looking for (num) to the regex pattern
+    pattern = '.*\[([0-9]+/[a-zA-Z]+/[0-9]{4}):(.*) \-[0-9]{4}\] \"(.*)\" ' + num + '\d\d'
+    amt_requests = 0
+
+    # Loop through each line of file
+    for line in file:
+        # Read line of file one by one and temporarily store as one_line
+        one_line = file.readline()
+
+        # Use regex function re.search() to check if current line matches with regex pattern
+        if re.search(pattern, one_line):
+            # If it matches, increment amt_requests by 1
+            amt_requests += 1
+    
+    # Get percentage; divide amt_requests by amt_request_total
+    requests_percent = (amt_requests / amt_request_total) * 100
+    return round(requests_percent, 2)
+    
+
 # Claire's Code: Fetching the log file from the Apache server
 URL_PATH = 'https://s3.amazonaws.com/tcmg476/http_access_log'
 LOCAL_FILE = 'http_access_log.txt'
@@ -37,12 +61,14 @@ os.system('clear')
 file = open(local_file, "r")
 amt_request_six_months = getSixMonths(file)
 
+
 # Irish's Code: Calculating total amount of requests
 
 # opens & reads LOCAL_FILE as filehead file
 with open(LOCAL_FILE, "r") as file:
     # stores each line in list & counts list length
     amt_request_total= len(file.readlines())
+
 
 # Roxanna's Code: Outputting the requested amounts
 print("Total amount of data requested within six months:", amt_request_six_months)
@@ -51,33 +77,11 @@ print("Total amount of requests for the total amount of time period:", amt_reque
 
 print("Done analyzing log files.")
 
+
 # Irish's Code: Percentage of total amount of bad requests
-
-# Make amt_bad_requests variable to keep track of total amount of 4xx status codes
-amt_bad_requests = 0
-# Open file
 with open(LOCAL_FILE, "r") as file:
-    
-    # Get index where status code is
-    for line in file:
-        # Reads line
-        one_line = file.readline()
-        # Stores each value in list and splits it by space
-        one_line_list = one_line.split(" ")
-        # print(one_line_list)
+    print("Percent of Unsuccessful Requests: ", getRequestsPercent(file, "4"), "%")
 
-        # Skips any lines in log file that are not the same length 
-        if len(one_line_list) == 10:
-            # Request code from second to last index of list
-            code = one_line_list[len(one_line_list) - 2]
 
-            # If code at first index is equal to 4; which indicates a bad request
-            if code[0] == "4":
-                # Increment amt_bad_requests + 1
-                amt_bad_requests += 1
 
-# Get percentage; divide amt_bad_requests by total amount of requests found in previous lab #3
-bad_requests_percent = (amt_bad_requests / amt_request_total) * 100
-print("Total amount of bad requests: ", amt_bad_requests)
-print("Percent of bad requests: ", round(bad_requests_percent, 2), "%")
 
