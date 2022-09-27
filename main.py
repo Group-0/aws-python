@@ -87,8 +87,9 @@ with open(LOCAL_FILE, "r") as file:
 
 # Juan's Code: Percentage of requests that were redirected elsewhere (3xx request codes)
 # Open and read file
-
+with open(LOCAL_FILE, "r") as file:
     # Call function with correct parameters and print results
+    print("Percent of Unsuccessful Requests: ", getRequestsPercent(file, "3"), "%")
 
 
 
