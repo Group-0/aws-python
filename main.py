@@ -89,7 +89,7 @@ with open(LOCAL_FILE, "r") as file:
 # Open and read file
 with open(LOCAL_FILE, "r") as file:
     # Call function with correct parameters and print results
-    print("Percent of Unsuccessful Requests: ", getRequestsPercent(file, "3"), "%")
+    print("Percent of Redirected Requests: ", getRequestsPercent(file, "3"), "%")
 
 
 
